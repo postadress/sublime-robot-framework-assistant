@@ -11,6 +11,7 @@ from .scan_open_tab import ScanOpenTabCommand
 from .setting_import_helper import InsertImport
 from .setting_import_helper import SettingImporter
 from .show_documentation import ShowKeywordDocumentation
+from .start_current_robot_test import StartCurrentRobotTestCommand
 
 __all__ = [
     'IndexOpenTabCommand',
@@ -25,5 +26,6 @@ __all__ = [
     'ScanIndexCommand',
     'ScanOpenTabCommand',
     'SettingImporter',
-    'ShowKeywordDocumentation'
+    'ShowKeywordDocumentation',
+    'StartCurrentRobotTestCommand'
 ]
