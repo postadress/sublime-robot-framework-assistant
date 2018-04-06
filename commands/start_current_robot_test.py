@@ -70,19 +70,28 @@ class StartCurrentRobotTestCommand(sublime_plugin.TextCommand):
         work_path = settings.get('robot_framework_workspace')
         output_path = settings.get('robot_framework_output_path')
         consolewidth = settings.get('robot_framework_consolewidth')
+
         if platform.system() == 'Windows':
             cmd = 'cmd '
             cmd += '/k ' if settings.get('robot_framework_keep_console') else '/c '
             cmd += 'pybot '
         else:
             cmd = 'python -m robot.run '
+
         if consolewidth:
             cmd += '--consolewidth %s ' % consolewidth
+
         cmd += '--test "%s" ' % testcase
-        cmd += '--suite "%s" ' % suite
-        cmd += '--outputdir %s ' % output_path
+
+        if suite:
+            cmd += '--suite "%s" ' % suite
+
+        if output_path:
+            cmd += '--outputdir %s ' % output_path
+
         cmd += '--debugfile debug.txt '
         cmd += '.'
+        
         subprocess.Popen(cmd, cwd=work_path)
 
     def print_and_send(self, message):

@@ -172,6 +172,24 @@ Such prefixes are testcase specific and must be ignored when looking up a keywor
 Configuration for typical Gherkin stories:
 "robot_framework_keyword_prefixes" : ["Given","When","Then","And","But"]
 
+## Special settings for the `start_current_robot_test` command
+
+### robot_framework_output_path
+Where to save output, report, log and debug files produced while running Robot tests.
+
+By default those files will be saved in `robot_framework_workspace`.
+
+### robot_framework_keep_console
+If set to true, the console will stay open after running a test.
+
+By default the console is closed immediately after the test has finished.
+
+Works only on Windows.
+
+### robot_framework_consolewidth
+Defines the width of the console output when running a test.
+
+
 # Syntax definitions
 By default this plugin will be used with files which extension is
 `.robot` and plugin will use four spaces as cell separator. The
@@ -227,6 +245,9 @@ menu is only displayed if cursor is in settings table and line contains `Librari
 
 The usage of the `Ctrl + Alt + a/s/i` commands is explained in the
 [Internal database for keywords and variables](https://github.com/andriyko/sublime-robot-framework-assistant/wiki/Internal-database-for-keywords-and-variables) wiki page
+
+* Pressing `F8` will run the current test (where the [first] cursor is)
+* Pressing `Shift+F8` will repeat the last test which was run by `F8`
 
 # Snippets
 [Snippets](http://docs.sublimetext.info/en/latest/extensibility/snippets.html?highlight=snippets)
