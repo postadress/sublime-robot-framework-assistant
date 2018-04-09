@@ -189,6 +189,9 @@ Works only on Windows.
 ### robot_framework_consolewidth
 Defines the width of the console output when running a test.
 
+### robot_framework_save_before_running_test
+If set to `true` all views will be saved, before starting the current test.
+
 
 # Syntax definitions
 By default this plugin will be used with files which extension is

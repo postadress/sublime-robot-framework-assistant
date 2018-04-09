@@ -17,6 +17,7 @@ class StartCurrentRobotTestCommand(sublime_plugin.TextCommand):
         "robot_framework_output_path": "path_where_to_put_the_files_generated_by_Robot"
         "robot_framework_keep_console": [true|false] (only Windows, default: false)
         "robot_framework_consolewidth": <width>
+        "robot_framework_save_before_running_test": [true|false] (default false)
 
     Example how to bind the function to a key:
         { "keys": ["f8"],
@@ -64,8 +65,14 @@ class StartCurrentRobotTestCommand(sublime_plugin.TextCommand):
         suite_name = previous_started_test['suite']
         self.start_robot(testcase_name, suite_name)
 
+    def save_all_views(self):
+        for open_view in self.view.window().views():
+            open_view.run_command('save')
+
     def start_robot(self, testcase, suite):
         settings = sublime.load_settings('Robot.sublime-settings')
+        if settings.get('robot_framework_save_before_running_test'):
+            self.save_all_views()
         self.print_and_send("starting Test '{}' in Suite '{}'".format(testcase, suite))
         work_path = settings.get('robot_framework_workspace')
         output_path = settings.get('robot_framework_output_path')
